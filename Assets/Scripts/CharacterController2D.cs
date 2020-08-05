@@ -152,16 +152,11 @@ public class CharacterController2D : MonoBehaviour, ICharacterEvents
         Vector3 targetVelocity = new Vector2(movementSpeed, m_Rigidbody2D.velocity.y);
         // And then smoothing it out and applying it to the character
         m_Rigidbody2D.velocity = targetVelocity;
-
+        Debug.Log(jump);
 
         // If the player should jump...
-        if ((IsGrounded && jump) || (myCoyoteJump && jump))
+        if ((IsGrounded && jump))
         {
-            // If unit is falling and outside of coyote time then don't jump.
-            if (IsFalling && !myCoyoteJump)
-            {
-                return;
-            }
             // Add vertical force/velocity to the unit.
             Jump();
         }
